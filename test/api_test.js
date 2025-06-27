@@ -91,10 +91,10 @@ Scenario('invalidate invalid day (0)', ({ I }) => {
         month: 6,
         year: 2023
     });
-    I.seeResponseCodeIs(200);
+    I.seeResponseCodeIs(400);
     I.seeResponseContainsJson({
         valid: false,
-        error: 'The provided date does not exist'
+        error: 'Day, month, and year are required'
     });
 });
 
@@ -165,6 +165,19 @@ Scenario('handle year out of range (too low)', ({ I }) => {
         day: 15,
         month: 6,
         year: 0
+    });
+    I.seeResponseCodeIs(400);
+    I.seeResponseContainsJson({
+        valid: false,
+        error: 'Day, month, and year are required'
+    });
+});
+
+Scenario('handle year out of range (actually too low)', ({ I }) => {
+    I.sendPostRequest('/validate-date', {
+        day: 15,
+        month: 6,
+        year: -1
     });
     I.seeResponseCodeIs(400);
     I.seeResponseContainsJson({
