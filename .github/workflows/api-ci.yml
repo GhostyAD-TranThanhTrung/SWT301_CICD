@@ -13,7 +13,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x, 22.x]
     
     steps:
       - name: 🚀 Checkout repository
@@ -62,7 +62,7 @@ jobs:
           echo "🔄 Ensuring test dependencies are up to date..."
           npm i --verbose
           echo "🚀 Starting CodeceptJS test execution..."
-          npx codeceptjs run --reporter mocha-multi
+          npx codeceptjs run --verbose
           
       - name: 🛑 Stop API server
         if: always()
