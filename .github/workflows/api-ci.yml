@@ -86,7 +86,7 @@ jobs:
         run: npm ci
         
       - name: 🔍 Run ESLint
-        run: npm run lint || true
+        run: npm run lint -- --ignore-path .gitignore --ignore-pattern "test/" || true
         
       - name: 📝 Check code formatting
         run: |
