@@ -26,12 +26,21 @@ jobs:
           cache: 'npm'
           
       - name: 📦 Install main dependencies
-        run: npm ci
+        run: |
+          echo "🔍 Installing main project dependencies..."
+          npm ci --verbose
+          echo "✅ Main dependencies installed successfully"
+          echo "📋 Installed packages:"
+          npm list --depth=0
         
       - name: 📦 Install test dependencies
         run: |
+          echo "🧪 Installing test dependencies..."
           cd test
-          npm ci
+          npm i --verbose
+          echo "✅ Test dependencies installed successfully"
+          echo "📋 Test packages:"
+          npm list --depth=0
           
       - name: 🧹 Clean up any existing processes
         run: |
@@ -50,7 +59,9 @@ jobs:
       - name: 🧪 Run API tests
         run: |
           cd test
-          npm i
+          echo "🔄 Ensuring test dependencies are up to date..."
+          npm i --verbose
+          echo "🚀 Starting CodeceptJS test execution..."
           npx codeceptjs run --reporter mocha-multi
           
       - name: 🛑 Stop API server
@@ -83,8 +94,11 @@ jobs:
           node-version: '20.x'
           cache: 'npm'
           
-      - name: 📦 Install dependencies
-        run: npm ci
+      - name: 📦 Install dependencies (Lint Job)
+        run: |
+          echo "🔍 Installing dependencies for linting..."
+          npm ci --verbose
+          echo "✅ Dependencies installed for code quality checks"
         
       - name: 🔍 Run ESLint
         run: npm run lint -- --ignore-path .gitignore --ignore-pattern "test/" || true
@@ -106,13 +120,19 @@ jobs:
           node-version: '20.x'
           cache: 'npm'
           
-      - name: 📦 Install dependencies
-        run: npm ci
+      - name: 📦 Install dependencies (Security Job)
+        run: |
+          echo "🔍 Installing dependencies for security scan..."
+          npm ci --verbose
+          echo "✅ Dependencies installed for security checks"
         
       - name: 🔒 Run security audit
-        run: npm audit --audit-level moderate
+        run: |
+          echo "🛡️ Running security audit on main dependencies..."
+          npm audit --audit-level moderate
         
       - name: 🔍 Check for vulnerabilities
         run: |
+          echo "🛡️ Running security audit on test dependencies..."
           cd test
           npm audit --audit-level moderate 
