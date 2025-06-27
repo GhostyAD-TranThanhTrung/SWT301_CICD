@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "codeceptjs run",
+    "test:verbose": "codeceptjs run --verbose"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
-  "devDependencies": {
-    "codeceptjs": "^3.7.3"
+  "dependencies": {
+    "codeceptjs": "^3.7.3",
+    "mocha": "^10.7.3",
+    "mocha-multi": "^1.1.7"
   }
 }

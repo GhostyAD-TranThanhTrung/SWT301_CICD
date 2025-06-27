@@ -50,6 +50,7 @@ jobs:
       - name: 🧪 Run API tests
         run: |
           cd test
+          npm ci
           npx codeceptjs run --reporter mocha-multi
           
       - name: 🛑 Stop API server
