@@ -26,7 +26,7 @@ function App() {
     setResult(null)
 
     try {
-      const response = await fetch('http://localhost:3001/api/validate-date', {
+      const response = await fetch('http://localhost:3000/api/validate-date', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

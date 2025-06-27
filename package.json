@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "start": "node index.js",
     "server": "node index.js",
     "server:dev": "nodemon index.js"
   },
@@ -22,6 +23,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "codeceptjs": "^3.7.3",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
@@ -31,7 +33,13 @@
   },
   "description": "A date validation application with React frontend and Express backend",
   "main": "index.js",
-  "keywords": ["date", "validation", "react", "express", "SWT301"],
+  "keywords": [
+    "date",
+    "validation",
+    "react",
+    "express",
+    "SWT301"
+  ],
   "author": "",
   "license": "ISC"
 }
