@@ -43,7 +43,7 @@ Scenario('invalidate non-leap year date - February 29, 2023', ({ I }) => {
     I.seeResponseCodeIs(200);
     I.seeResponseContainsJson({
         valid: false,
-        error: 'The provided date does not exist skibidi'
+        error: 'The provided date does not exist'
     });
 });
 
