@@ -37,7 +37,7 @@ function isValidDate(year, month, day) {
         if (day >= 1) {
             const maxDay = daysInMonth(year, month);
             if (day <= maxDay) {
-                 return true;
+                return true
             }
         }
     }
